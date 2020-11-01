@@ -1,3 +1,15 @@
+require("dotenv").config();
+const mongoose = require("mongoose");
+console.log(process.env.MONGODB_PASSWORD)
+mongoose
+  .connect(
+    `mongodb+srv://Odion:${process.env.MONGODB_PASSWORD}@cluster0-8s7lw.mongodb.net/systemview?retryWrites=true&w=majority`,
+    { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+  )
+  .then((data) => console.log("mongodb connected:-->"))
+  .catch((err) => console.log("mongodb connection failed:-->", err));
+
+
 const { App } = require("sht-tasks");
 const route = "systemview/api/systemview";
 const port = 3300;
@@ -7,3 +19,5 @@ require("./Services/Services.api");
 //require("./EventFeed/EventFeed.api");
 
 App.startService({ route, port, useREST })
+
+
