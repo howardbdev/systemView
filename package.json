@@ -1,0 +1,25 @@
+{
+  "name": "systemview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+
+  "dependencies": {
+    "sht-tasks": "^2.2.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",  
+    "start": "pm2 start app.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Odion100/systemView.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Odion100/systemView/issues"
+  },
+  "homepage": "https://github.com/Odion100/systemView#readme"
+}
