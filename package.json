@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "moment": "^2.29.1",
     "mongoose": "^5.10.11",
     "sht-tasks": "^2.2.8"
   },
