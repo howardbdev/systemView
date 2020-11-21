@@ -10,7 +10,6 @@ module.exports = model(
     project_code: { type: String, required },
     service_id: { type: String, unique, required },
     last_update: { type: Date, default: moment().toJSON() },
-    documentation: { type: String },
     url: { type: String, required },
     namespace: { type: String, required },
     server_modules: [
@@ -18,12 +17,10 @@ module.exports = model(
         namespace: { type: String, required },
         route: { type: String, required },
         name: { type: String, required },
-        documentation: { type: String },
         methods: [
           {
             fn: { type: String, required },
             method: { type: String, required },
-            documentation: { type: String },
             tests: { type: String },
           },
         ],
@@ -32,7 +29,6 @@ module.exports = model(
     system_modules: [
       {
         name: { type: String, required },
-        documentation: { type: String },
       },
     ],
     dependencies: [

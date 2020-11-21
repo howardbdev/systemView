@@ -1,6 +1,6 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
-console.log(process.env.MONGODB_PASSWORD);
+
 mongoose
   .connect(
     `mongodb+srv://Odion:${process.env.MONGODB_PASSWORD}@cluster0-8s7lw.mongodb.net/systemview?retryWrites=true&w=majority`,
@@ -10,7 +10,7 @@ mongoose
   .catch((err) => console.log("mongodb connection failed:-->", err));
 
 const { App } = require("sht-tasks");
-const route = "systemview/api/systemview";
+const route = "systemview/api";
 const port = 3300;
 const useREST = true;
 

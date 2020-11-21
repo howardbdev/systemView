@@ -60,4 +60,13 @@ App.ServerModule("SystemView", function () {
       cb(error);
     }
   };
+
+  SystemView.getServices = ({ project_code }, cb) => {
+    console.log(project_code);
+    SystemViewModel.find({ project_code })
+      .then((services) => {
+        cb(null, { services, status: 200 });
+      })
+      .catch((error) => cb(error));
+  };
 });
