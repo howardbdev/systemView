@@ -1,10 +1,9 @@
 module.exports = {
-    apps: [
-      {
-        script: "SystemView",
-        watch: true,
-        wait_ready: false,
-      },
-    ],
-  };
-  
+  apps: [
+    {
+      script: "SystemLink",
+      watch: true,
+      wait_ready: false,
+    },
+  ],
+};
