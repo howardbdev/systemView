@@ -4,7 +4,7 @@ const required = true;
 const unique = true;
 
 module.exports = model(
-  "Documentation",
+  "ServiceDocumentation",
   Schema({
     _id: Schema.Types.ObjectId,
     project_code: { type: String, required },
