@@ -5,19 +5,19 @@ const ServiceDataModel = require("./ServiceData.model");
 App.ServerModule("Documentation", function () {
   const Documentation = this;
 
-  Documentation.add = (data, cb) => {
+  Documentation.saveMethodDataTable = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.get = (data, cb) => {
+  Documentation.saveMethodDescription = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.archive = (data, cb) => {
+  Documentation.saveReturnDataTable = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.save = (data, cb) => {
+  Documentation.saveReturnDataDescription = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 });

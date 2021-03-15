@@ -8,7 +8,7 @@ module.exports = model(
   Schema({
     _id: Schema.Types.ObjectId,
     project_code: { type: String, required },
-    service_id: { type: String, unique, required },
+    service_id: { type: String, required },
     last_update: { type: Date, default: moment().toJSON() },
     url: { type: String, required },
     namespace: { type: String, required },
