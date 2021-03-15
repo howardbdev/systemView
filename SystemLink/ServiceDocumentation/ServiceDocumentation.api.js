@@ -1,6 +1,6 @@
 const { App } = require("sht-tasks");
 const { Types } = require("mongoose");
-const ServiceDataModel = require("./ServiceData.model");
+const ServiceDataModel = require("./ServiceDocumentation.model");
 
 App.ServerModule("Documentation", function () {
   const Documentation = this;
