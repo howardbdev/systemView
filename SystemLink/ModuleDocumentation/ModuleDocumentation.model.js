@@ -4,11 +4,12 @@ const required = true;
 const unique = true;
 
 module.exports = model(
-  "ServiceDocumentation",
+  "ModuleDocumentation",
   Schema({
     _id: Schema.Types.ObjectId,
     project_code: { type: String, required },
     document_ref: { type: String, required },
+    name: { type: String, required },
     description: { type: String },
     service_dependenies: [
       {
@@ -17,20 +18,7 @@ module.exports = model(
         document_ref: { type: String },
       },
     ],
-    server_modules: [
-      {
-        name: { type: String, required },
-        description: { type: String },
-        label: { type: String },
-      },
-    ],
     evevts: [
-      {
-        name: { type: String, required },
-        description: { type: String },
-      },
-    ],
-    system_modules: [
       {
         name: { type: String, required },
         description: { type: String },
@@ -40,6 +28,15 @@ module.exports = model(
       {
         name: { type: String, required },
         description: { type: String },
+        properties: [
+          {
+            name: { type: String },
+            type: { type: String },
+            description: { type: String },
+            default: { type: String },
+            required: { type: String },
+          },
+        ],
       },
     ],
   })

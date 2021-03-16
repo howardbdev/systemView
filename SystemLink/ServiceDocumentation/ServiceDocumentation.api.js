@@ -1,23 +1,23 @@
 const { App } = require("sht-tasks");
 const { Types } = require("mongoose");
-const ServiceDataModel = require("./ServiceDocumentation.model");
+const ServiceDocumentationModel = require("./ServiceDocumentation.model");
 
-App.ServerModule("Documentation", function () {
-  const Documentation = this;
+App.ServerModule("ServiceDocumentation", function () {
+  const ServiceDocumentation = this;
 
-  Documentation.saveMethodDataTable = (data, cb) => {
+  ServiceDocumentation.saveMethodDataTable = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.saveMethodDescription = (data, cb) => {
+  ServiceDocumentation.saveMethodDescription = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.saveReturnDataTable = (data, cb) => {
+  ServiceDocumentation.saveReturnDataTable = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 
-  Documentation.saveReturnDataDescription = (data, cb) => {
+  ServiceDocumentation.saveReturnDataDescription = (data, cb) => {
     cb(null, { message: "documentation" });
   };
 });
