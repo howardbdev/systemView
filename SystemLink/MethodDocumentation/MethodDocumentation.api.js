@@ -20,7 +20,7 @@ App.ServerModule("MethodDocumentation", function () {
     }
   };
 
-  MethodDocumentation.saveDocs = async (data, cb) => {
+  MethodDocumentation.saveDoc = async (data, cb) => {
     const {
       project_code,
       service_id,
