@@ -1,5 +1,6 @@
 const { Schema, model } = require("mongoose");
 const moment = require("moment");
+const { data_types, namespace_validator } = require("../_shared/shared_constants");
 const required = true;
 const unique = true;
 
@@ -23,19 +24,33 @@ module.exports = model(
       {
         name: { type: String, required },
         description: { type: String },
+        data: {
+          variable_namespace: { type: String, required, validate: namespace_validator },
+          data_type: { type: String, required, enum: data_types },
+          object_ref: { type: String },
+          properties: [
+            {
+              name: { type: String, required, validate: namespace_validator },
+              data_type: { type: String, required, enum: data_types },
+              object_ref: { type: String },
+              description: { type: String },
+            },
+          ],
+        },
       },
     ],
     db_objects: [
       {
-        name: { type: String, required },
-        description: { type: String },
+        variable_namespace: { type: String, required, validate: namespace_validator },
+        data_type: { type: String, required, enum: data_types },
         properties: [
           {
-            name: { type: String },
-            type: { type: String },
+            name: { type: String, required, validate: namespace_validator },
+            data_type: { type: String, required, enum: data_types },
+            object_ref: { type: String },
             description: { type: String },
-            default: { type: String },
-            required: { type: String },
+            default_value: { type: String },
+            required: { type: Boolean, default: false },
           },
         ],
       },
