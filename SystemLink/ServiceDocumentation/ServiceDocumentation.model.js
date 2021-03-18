@@ -17,13 +17,6 @@ module.exports = model(
         document_ref: { type: String },
       },
     ],
-    server_modules: [
-      {
-        name: { type: String, required },
-        description: { type: String },
-        label: { type: String },
-      },
-    ],
     evevts: [
       {
         name: { type: String, required },

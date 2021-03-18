@@ -5,36 +5,51 @@ const MethodDocumentationModel = require("./MethodDocumentation.model");
 App.ServerModule("MethodDocumentation", function () {
   const MethodDocumentation = this;
 
+  MethodDocumentation.get = async ({ project_code, service_id, module_name, method_name }) => {
+    try {
+      const methodDocumentation = await MethodDocumentationModel.findOne({
+        project_code,
+        service_id,
+        module_name,
+        method_name,
+      });
+      if (methodDocumentation) cb(null, { methodDocumentation, status: 200 });
+      else cb({ status: 404, message: "methodDoucumentation not found" });
+    } catch (error) {
+      cb(error);
+    }
+  };
+
   MethodDocumentation.saveDocs = async (data, cb) => {
     const {
       project_code,
       service_id,
       module_name,
       method_name,
+
       description,
       request_data,
       response_data,
-      triggered_events,
     } = data;
     try {
-      const MethodDocumentation = await MethodDocumentationModel.findOne({
+      const methodDocumentation = await MethodDocumentationModel.findOne({
         project_code,
         service_id,
         module_name,
         method_name,
       });
 
-      if (MethodDocumentation) {
-        if (description || description === "") MethodDocumentation.description = description;
-        if (request_data) MethodDocumentation.request_data = request_data;
-        if (response_data) MethodDocumentation.response_data = response_data;
-        if (triggered_events) MethodDocumentation.triggered_events = triggered_events;
-        if (request_data) MethodDocumentation.request_data = request_data;
+      if (methodDocumentation) {
+        if (description || description === "") methodDocumentation.description = description;
+        if (request_data) methodDocumentation.request_data = request_data;
+        if (response_data) methodDocumentation.response_data = response_data;
+        if (request_data) methodDocumentation.request_data = request_data;
 
-        MethodDocumentation.save()
-          .then((MethodDocumentation) =>
+        methodDocumentation
+          .save()
+          .then((methodDocumentation) =>
             cb(null, {
-              MethodDocumentation,
+              methodDocumentation,
               status: 200,
               message: "MethodDocumentation saved succesfully",
             })
@@ -48,19 +63,73 @@ App.ServerModule("MethodDocumentation", function () {
           _id: Types.ObjectId(),
         })
           .save()
-          .then((MethodDocumentation) =>
+          .then((methodDocumentation) =>
             cb(null, {
-              MethodDocumentation,
+              methodDocumentation,
               status: 200,
               message: "New MethodDocumentation saved succesfully",
             })
           )
           .catch((error) =>
-            cb({ error, status: 400, message: "New MethodDocumentation save attempt failed" })
+            cb({ error, status: 400, message: "New MethodDocumentation saveDocs failed" })
           );
       }
     } catch (error) {
       cb(error);
     }
+  };
+
+  MethodDocumentation.addEvent = async (
+    { project_code, service_id, module_name, method_name, triggered_event },
+    cb
+  ) => {
+    try {
+      const methodDocumentation = await MethodDocumentationModel.findOne({
+        project_code,
+        service_id,
+        module_name,
+        method_name,
+      });
+
+      if (methodDocumentation) {
+        methodDocumentation.triggered_events.push(triggered_event);
+        methodDocumentation
+          .save()
+          .then((methodDocumentation) =>
+            cb(null, {
+              methodDocumentation,
+              status: 200,
+              message: "MethodDocumentation triggerd_event succesfully",
+            })
+          )
+          .catch((error) =>
+            cb({ error, status: 400, message: "MethodDocumentation addEvent failed" })
+          );
+      } else cb({ status: 404, message: "methodDoucumentation not found" });
+    } catch (error) {
+      cb(error);
+    }
+  };
+  MethodDocumentation.removeEvent = (
+    { project_code, service_id, module_name, method_name, id },
+    cb
+  ) => {
+    MethodDocumentationModel.update(
+      {
+        project_code,
+        service_id,
+        module_name,
+        method_name,
+      },
+      { $pull: { _id: id } }
+    )
+      .then((methodDocumentation) =>
+        cb(null, {
+          methodDocumentation,
+          status: 200,
+          message: "MethodDocumentation triggerd_event succesfully",
+        })
+      )
+      .catch((error) => cb({ error, status: 400, message: "MethodDocumentation addEvent failed" }));
   };
 });

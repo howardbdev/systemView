@@ -7,9 +7,10 @@ module.exports = model(
   "ModuleDocumentation",
   Schema({
     _id: Schema.Types.ObjectId,
-    project_code: { type: String, required },
-    document_ref: { type: String, required },
-    name: { type: String, required },
+    project_code: { type: String, required, validate: namespace_validator },
+    service_id: { type: String, required, validate: namespace_validator },
+    module_name: { type: String, required, validate: namespace_validator },
+
     description: { type: String },
     service_dependenies: [
       {
