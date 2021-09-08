@@ -15,6 +15,7 @@ const port = 3300;
 const useREST = true;
 
 require("./SystemLink/SystemLink.api");
+require("./MethodDocumentation/MethodDocumentation.api");
 //require("./EventFeed/EventFeed.api");
 
 App.startService({ route, port, useREST });

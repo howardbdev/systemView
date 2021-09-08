@@ -16,8 +16,8 @@ module.exports = model(
     description: { type: String },
 
     request_data: {
-      variable_namespace: { type: String, required, validate: namespace_validator },
-      data_type: { type: String, required, enum: data_types },
+      variable_namespace: { type: String, default: "data", validate: namespace_validator },
+      data_type: { type: String, enum: data_types },
       object_ref: { type: String },
       properties: [
         {
@@ -32,8 +32,8 @@ module.exports = model(
     },
 
     response_data: {
-      variable_namespace: { type: String, required, validate: namespace_validator },
-      data_type: { type: String, required, enum: data_types },
+      variable_namespace: { type: String, default: "data", validate: namespace_validator },
+      data_type: { type: String, enum: data_types },
       object_ref: { type: String },
       properties: [
         {

@@ -1,5 +1,6 @@
 const data_types = [
   "String",
+  "Date",
   "Object",
   "ObjectId",
   "Number",

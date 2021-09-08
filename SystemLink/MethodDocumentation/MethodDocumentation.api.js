@@ -5,15 +5,15 @@ const MethodDocumentationModel = require("./MethodDocumentation.model");
 App.ServerModule("MethodDocumentation", function () {
   const MethodDocumentation = this;
 
-  MethodDocumentation.get = async ({ project_code, service_id, module_name, method_name }) => {
+  MethodDocumentation.get = async ({ project_code, service_id, module_name, method_name }, cb) => {
     try {
-      const methodDocumentation = await MethodDocumentationModel.findOne({
+      const documentation = await MethodDocumentationModel.findOne({
         project_code,
         service_id,
         module_name,
         method_name,
       });
-      if (methodDocumentation) cb(null, { methodDocumentation, status: 200 });
+      if (documentation) cb(null, { documentation, status: 200 });
       else cb({ status: 404, message: "methodDoucumentation not found" });
     } catch (error) {
       cb(error);
@@ -47,9 +47,9 @@ App.ServerModule("MethodDocumentation", function () {
 
         methodDocumentation
           .save()
-          .then((methodDocumentation) =>
+          .then((documentation) =>
             cb(null, {
-              methodDocumentation,
+              documentation,
               status: 200,
               message: "MethodDocumentation saved succesfully",
             })
@@ -63,9 +63,9 @@ App.ServerModule("MethodDocumentation", function () {
           _id: Types.ObjectId(),
         })
           .save()
-          .then((methodDocumentation) =>
+          .then((documentation) =>
             cb(null, {
-              methodDocumentation,
+              documentation,
               status: 200,
               message: "New MethodDocumentation saved succesfully",
             })
@@ -95,9 +95,9 @@ App.ServerModule("MethodDocumentation", function () {
         methodDocumentation.triggered_events.push(triggered_event);
         methodDocumentation
           .save()
-          .then((methodDocumentation) =>
+          .then((documetation) =>
             cb(null, {
-              methodDocumentation,
+              documetation,
               status: 200,
               message: "MethodDocumentation triggerd_event succesfully",
             })
@@ -123,9 +123,9 @@ App.ServerModule("MethodDocumentation", function () {
       },
       { $pull: { _id: id } }
     )
-      .then((methodDocumentation) =>
+      .then((documentation) =>
         cb(null, {
-          methodDocumentation,
+          documentation,
           status: 200,
           message: "MethodDocumentation triggerd_event succesfully",
         })
