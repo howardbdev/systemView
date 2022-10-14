@@ -15,7 +15,10 @@ App.ServerModule("SystemLink", function () {
       const { route, port, host = "localhost" } = system.routing;
       const url = `http://${host}:${port}/${route}`;
       const { namespace, modules } = await HttpClient.request({ url });
-      const SystemLink = await SystemLinkModel.findOne({ project_code, service_id });
+      const SystemLink = await SystemLinkModel.findOne({
+        project_code,
+        service_id,
+      });
 
       if (SystemLink) {
         //updated SystemLink dependencies
@@ -27,11 +30,20 @@ App.ServerModule("SystemLink", function () {
         SystemLink.last_updated = moment().toJSON();
         SystemLink.save()
           .then((updatedSystemLink) =>
-            cb(null, { updatedSystemLink, status: 200, message: "New SystemLink connection added" })
+            cb(null, {
+              updatedSystemLink,
+              status: 200,
+              message: "New SystemLink connection added",
+            })
           )
-          .catch((error) =>
-            cb({ error, status: 400, message: "New SystemLink connection failed" })
-          );
+          .catch((error) => {
+            console.log(error);
+            cb({
+              error,
+              status: 400,
+              message: "New SystemLink connection failed",
+            });
+          });
       } else {
         //add new SystemLink
         const dependencies = system.Services;
@@ -49,10 +61,18 @@ App.ServerModule("SystemLink", function () {
         })
           .save()
           .then((newSystemLink) =>
-            cb(null, { newSystemLink, status: 200, message: "New SystemLink connection added" })
+            cb(null, {
+              newSystemLink,
+              status: 200,
+              message: "New SystemLink connection added",
+            })
           )
           .catch((error) =>
-            cb({ error, status: 400, message: "New SystemLink connection failed" })
+            cb({
+              error,
+              status: 400,
+              message: "New SystemLink connection failed",
+            })
           );
       }
     } catch (error) {

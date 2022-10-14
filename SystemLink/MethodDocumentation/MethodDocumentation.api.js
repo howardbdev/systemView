@@ -95,17 +95,17 @@ App.ServerModule("MethodDocumentation", function () {
         methodDocumentation.triggered_events.push(triggered_event);
         methodDocumentation
           .save()
-          .then((documetation) =>
+          .then((documentation) =>
             cb(null, {
-              documetation,
+              documentation,
               status: 200,
-              message: "MethodDocumentation triggerd_event succesfully",
+              message: "MethodDocumentation triggered_event successfully",
             })
           )
           .catch((error) =>
             cb({ error, status: 400, message: "MethodDocumentation addEvent failed" })
           );
-      } else cb({ status: 404, message: "methodDoucumentation not found" });
+      } else cb({ status: 404, message: "methodDocumentation not found" });
     } catch (error) {
       cb(error);
     }
@@ -127,7 +127,7 @@ App.ServerModule("MethodDocumentation", function () {
         cb(null, {
           documentation,
           status: 200,
-          message: "MethodDocumentation triggerd_event succesfully",
+          message: "MethodDocumentation triggered_event successfully",
         })
       )
       .catch((error) => cb({ error, status: 400, message: "MethodDocumentation addEvent failed" }));

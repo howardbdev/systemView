@@ -10,14 +10,14 @@ module.exports = model(
     project_code: { type: String, required },
     document_ref: { type: String, required },
     description: { type: String },
-    service_dependenies: [
+    service_dependencies: [
       {
         name: { type: String, required },
-        url: { type: String, reqired },
+        url: { type: String, required },
         document_ref: { type: String },
       },
     ],
-    evevts: [
+    events: [
       {
         name: { type: String, required },
         description: { type: String },
