@@ -7,12 +7,15 @@
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
     "mongoose": "^5.10.11",
-    "sht-tasks": "^2.2.8"
+    "sht-tasks": "^3.0.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "pm2 start app.config.js --watch"
+    "start": "pm2 start app.config.js --watch",
+    "dev": "nodemon SystemLink"
   },
   "repository": {
     "type": "git",
@@ -23,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/Odion100/systemView/issues"
   },
-  "homepage": "https://github.com/Odion100/systemView#readme"
+  "homepage": "https://github.com/Odion100/systemView#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
