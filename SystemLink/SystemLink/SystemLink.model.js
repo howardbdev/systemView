@@ -31,11 +31,11 @@ module.exports = model(
         name: { type: String, required },
       },
     ],
-    // dependencies: [
-    //   {
-    //     name: { type: String, required },
-    //     url: { type: String },
-    //   },
-    // ],
+    dependencies: [
+      {
+        name: { type: String, required },
+        url: { type: String },
+      },
+    ],
   })
 );
