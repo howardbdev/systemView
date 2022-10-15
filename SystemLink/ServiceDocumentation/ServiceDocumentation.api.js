@@ -1,4 +1,4 @@
-const { App } = require("sht-tasks");
+const { App } = require("systemlynx");
 const { Types } = require("mongoose");
 const ServiceDocumentationModel = require("./ServiceDocumentation.model");
 

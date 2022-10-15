@@ -1,7 +1,7 @@
 require("../connectDB");
 const MethodDocumentation = require("./MethodDocumentation");
 const SystemLink = require("./SystemLink");
-const { App } = require("sht-tasks");
+const { App } = require("systemlynx");
 const route = "systemlink/api";
 const port = 3300;
 const useREST = true;

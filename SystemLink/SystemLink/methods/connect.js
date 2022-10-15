@@ -1,3 +1,4 @@
+const { HttpClient } = require("systemlynx");
 const { Types } = require("mongoose");
 const SystemLink = require("../SystemLink.model");
 const moment = require("moment");
@@ -21,7 +22,7 @@ module.exports = async function ({ project_code, service_id, system }) {
     systemLink.namespace = namespace;
     systemLink.last_updated = moment().toJSON();
     try {
-      return await SystemLink.save();
+      return await systemLink.save();
     } catch (error) {
       return {
         error,
