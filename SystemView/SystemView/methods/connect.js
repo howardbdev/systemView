@@ -1,6 +1,6 @@
 const { HttpClient } = require("systemlynx");
 const { Types } = require("mongoose");
-const SystemLink = require("../SystemLink.model");
+const SystemView = require("../model");
 const moment = require("moment");
 
 module.exports = async function ({ project_code, service_id, system }) {
@@ -11,10 +11,10 @@ module.exports = async function ({ project_code, service_id, system }) {
   const { route, port, host = "localhost" } = system.routing;
   const url = `http://${host}:${port}/${route}`;
   const { namespace, modules } = await HttpClient.request({ url });
-  const systemLink = await SystemLink.findOne({ project_code, service_id });
+  const systemLink = await SystemView.findOne({ project_code, service_id });
 
   if (systemLink) {
-    //updated SystemLink dependencies
+    //updated SystemView dependencies
     systemLink.dependencies = system.Services;
     systemLink.system_modules = system.Modules;
     systemLink.server_modules = modules;
@@ -27,15 +27,15 @@ module.exports = async function ({ project_code, service_id, system }) {
       return {
         error,
         status: 400,
-        message: "New SystemLink connection failed",
+        message: "New SystemView connection failed",
       };
     }
   } else {
-    //add new SystemLink
+    //add new SystemView
     const dependencies = system.Services;
     const system_modules = system.Modules;
     try {
-      return new SystemLink({
+      return new SystemView({
         _id: Types.ObjectId(),
         project_code,
         service_id,
@@ -46,7 +46,7 @@ module.exports = async function ({ project_code, service_id, system }) {
         namespace,
       }).save();
     } catch (error) {
-      return { error, status: 400, message: "New SystemLink connection failed" };
+      return { error, status: 400, message: "New SystemView connection failed" };
     }
   }
 };

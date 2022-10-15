@@ -38,11 +38,11 @@ App.ServerModule("Tests", function () {
             cb(null, {
               testData,
               status: 200,
-              message: "SystemLink.Tests saved succesfully",
+              message: "SystemView.Tests saved succesfully",
             })
           )
           .catch((error) =>
-            cb({ error, status: 400, message: "New SystemLink.Tests save attempt failed" })
+            cb({ error, status: 400, message: "New SystemView.Tests save attempt failed" })
           );
       } else {
         new Tests({
@@ -54,11 +54,11 @@ App.ServerModule("Tests", function () {
             cb(null, {
               testData,
               status: 200,
-              message: "New SystemLink.Tests saved succesfully",
+              message: "New SystemView.Tests saved succesfully",
             })
           )
           .catch((error) =>
-            cb({ error, status: 400, message: "New SystemLink.Tests save failed" })
+            cb({ error, status: 400, message: "New SystemView.Tests save failed" })
           );
       }
     } catch (error) {
