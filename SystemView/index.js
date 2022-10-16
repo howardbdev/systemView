@@ -7,5 +7,5 @@ const port = 3300;
 const useREST = true;
 
 App.startService({ route, port, useREST })
-  .ServerModule("SystemView", SystemView)
-  .ServerModule("MethodDocumentation", MethodDocumentation);
+  .module("SystemView", SystemView)
+  .module("MethodDocumentation", MethodDocumentation);

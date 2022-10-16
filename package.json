@@ -7,7 +7,7 @@
     "dotenv": "^8.2.0",
     "moment": "^2.29.1",
     "mongoose": "^5.10.11",
-    "systemlynx": "^1.4.0"
+    "systemlynx": "^1.5.0"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
